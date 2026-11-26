@@ -67,7 +67,9 @@ header.mast{display:flex;justify-content:space-between;align-items:baseline;gap:
 .hero h1 em{font-style:normal;font-weight:400}
 .hero p.lede{font-size:19px;max-width:34em;color:var(--ink);margin:20px 0 0}
 .hero p.lede span{color:var(--muted)}
+.fig{margin:0}
 .strands{width:100%;height:auto;display:block}
+.fig-cap{font-size:13px;color:var(--muted);text-align:center;margin-top:6px;line-height:1.5}
 .strands text{font-family:var(--body);font-size:12px;fill:var(--muted)}
 .strands .yr{font-family:var(--display);font-size:15px;fill:var(--ink);font-weight:700}
 .strand{fill:none;stroke-width:3.2;stroke-linecap:round;transition:opacity .25s, stroke-width .25s}
@@ -197,31 +199,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
       <h1>שלושה קולות <em>בנו</em> את הבית.</h1>
       <p class="lede" id="thesis"></p>
     </div>
+    <figure class="fig">
     <svg class="strands" viewBox="0 0 520 304" role="img" aria-label="שלושה חוטים, חילוני, מסורתי ודתי, נשזרים יחד עד 1948, ובשנת 1967 החוט הדתי מתפצל לשניים">
       <defs>
         <path id="p-sec"  d="M510 70  C 420 70, 380 120, 300 140 S 220 148, 170 148 S 60 120, 10 110"/>
       </defs>
       <!-- ticks (RTL: time flows right to left) -->
       <g>
-        <line x1="470" y1="40" x2="470" y2="260" stroke="var(--rule)"/>
-        <line x1="300" y1="40" x2="300" y2="260" stroke="var(--rule)"/>
-        <line x1="210" y1="40" x2="210" y2="260" stroke="var(--rule)"/>
-        <line x1="30"  y1="40" x2="30"  y2="260" stroke="var(--rule)"/>
         <text class="yr" x="470" y="292" text-anchor="middle">1897</text>
         <text class="yr" x="300" y="292" text-anchor="middle">1948</text>
         <text class="yr" x="210" y="292" text-anchor="middle">1967</text>
         <text class="yr" x="30"  y="292" text-anchor="middle">היום</text>
       </g>
-      <path class="strand sec"  data-lane="sec"  d="M510 70  C 420 70, 380 128, 300 140 S 230 140, 170 132 S 60 112, 10 108"/>
-      <path class="strand trad" data-lane="trad" d="M510 150 C 420 150, 380 150, 300 150 S 230 152, 170 154 S 60 160, 10 160"/>
-      <path class="strand rel"  data-lane="rel"  d="M510 230 C 420 230, 380 172, 300 160 S 240 164, 210 168 S 90 196, 10 200"/>
-      <path class="strand fork" data-lane="rel"  d="M210 168 C 180 180, 150 230, 80 250 S 30 256, 10 258"/>
+      <path class="strand sec"  data-lane="sec"  d="M510 70 C 420 70, 360 146, 300 146 C 250 146, 220 140, 170 132 S 60 112, 10 108"/>
+      <path class="strand trad" data-lane="trad" d="M510 150 C 420 150, 360 150, 300 150 C 240 150, 200 154, 170 154 S 60 160, 10 160"/>
+      <path class="strand rel"  data-lane="rel"  d="M510 230 C 420 230, 360 154, 300 154 C 260 154, 235 158, 210 162 S 90 196, 10 200"/>
+      <path class="strand fork" data-lane="rel"  d="M210 162 C 180 180, 150 230, 80 250 S 30 256, 10 258"/>
       <circle cx="300" cy="150" r="22" fill="none" stroke="var(--tchelet)" stroke-width="1.5"/>
       <text x="300" y="104" text-anchor="middle">המגילה</text>
       <text x="150" y="268" text-anchor="middle" style="fill:var(--rel-fork);font-weight:600">המדינה כקודש</text>
       <text x="70" y="186" text-anchor="middle" style="fill:var(--rel);font-weight:600">המדינה כבית</text>
-      <circle class="pulse" r="4" style="offset-path:path('M510 150 C 420 150, 380 150, 300 150 S 230 152, 170 154 S 60 160, 10 160')"/>
+      <circle class="pulse" r="4" style="offset-path:path('M510 150 C 420 150, 360 150, 300 150 C 240 150, 200 154, 170 154 S 60 160, 10 160')"/>
     </svg>
+    <figcaption class="fig-cap">המרחק בין החוטים מסמל עד כמה הנראטיב קרוב או רחוק בין התפיסות לאורך זמן</figcaption>
+    </figure>
   </section>
 
   <div class="controls" role="group" aria-label="סינון">
