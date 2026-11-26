@@ -149,6 +149,12 @@ blockquote{margin:14px 0 4px;padding:0 18px 0 0;border-right:3px solid var(--tch
 .m{border-top:2px solid var(--ink);padding:12px 0 0}
 .m .t{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.25}
 .m p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.disclosure{margin:4px 0 24px;padding:14px 18px;border-right:3px solid var(--tchelet);background:var(--paper);border-radius:0 0 0 0;max-width:46em}
+.disclosure strong{font-size:12px;letter-spacing:.04em;color:var(--tchelet)}
+.disclosure p{margin:4px 0 0;font-size:15px;line-height:1.6}
+.disclosure .sig{font-size:13px;color:var(--muted)}
+#rnote{display:none}
+.rnote{font-size:13px;color:var(--muted);border-right:3px solid var(--tchelet);padding:6px 12px 6px 0;margin:0 0 24px}
 footer{padding:36px 0 60px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 
@@ -226,6 +232,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
     </figure>
   </section>
 
+  <aside class="disclosure" aria-label="שקיפות">
+    <strong>שקיפות</strong>
+    <p>החומר באתר הזה נבנה ממחקר שערכתי בשימוש בכלי בינה מלאכותית, והונגש כמאמרים בגוף ראשון. אני לא הכותב של הטקסטים, אני היוצר של הפרויקט.</p>
+    <p class="sig">בועז כץ, יוצר</p>
+  </aside>
+
   <div class="controls" role="group" aria-label="סינון">
     <div>
       <div class="ctl-label">הדגשת קול</div>
@@ -259,7 +271,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 
 <footer>
   <div class="wrap">
-    <div>מדורת השבט · סדרה מאת בועז כץ. כל פרק מסתיים ברשימת מקורות, ומחלוקות היסטוריות מסומנות בטקסט.</div>
+    <div>מדורת השבט · יוצר: בועז כץ. התוכן נבנה ממחקר בשימוש בכלי בינה מלאכותית והונגש בגוף ראשון. כל פרק מסתיים ברשימת מקורות, ומחלוקות היסטוריות מסומנות בטקסט.</div>
     <div>מצאתם טעות? אשמח לתקן.</div>
   </div>
 </footer>
@@ -273,6 +285,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
     <div class="prog" id="prog"></div>
   </div>
   <article class="article" id="article"></article>
+  <p class="rnote" id="rnote">החומר באתר הזה נבנה ממחקר שערכתי בשימוש בכלי בינה מלאכותית, והונגש כמאמרים בגוף ראשון. אני לא הכותב של הטקסטים, אני היוצר של הפרויקט.</p>
 </div>
 
 <script src="assets/marked.min.js"></script>
@@ -378,6 +391,7 @@ async function route(){
   let md = ''; try { const r = await fetch('content/post' + String(n).padStart(2,'0') + '.md'); if (r.ok) md = await r.text(); } catch(e){}
   article.innerHTML = md ? marked.parse(md) : `<h1>${esc(e.title)}</h1><p>${esc(e.card)}</p><p>לא הצלחנו לטעון את הטקסט המלא. נסו לרענן את הדף.</p>`;
   const prev = D.eras.find(x => x.post === n-1), next = D.eras.find(x => x.post === n+1);
+  article.insertAdjacentHTML('afterbegin', `<p class="rnote">${esc($('#rnote').textContent)}</p>`);
   article.insertAdjacentHTML('beforeend', `<nav class="rnav">${next ? `<a class="btn solid" href="#post-${next.post}">לפרק ${next.post}: ${esc(next.title)}</a>` : '<span></span>'}${prev ? `<a class="btn" href="#post-${prev.post}">לפרק ${prev.post}</a>` : ''}</nav>`);
   $('#rTitle').textContent = `פרק ${n} מתוך ${D.eras.length} · ${e.title}`;
   reader.classList.add('on'); document.body.style.overflow='hidden'; reader.scrollTop = 0; $('#closeReader').focus();
