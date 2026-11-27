@@ -64,3 +64,5 @@
 - "יהיה הצדק השליט העליון", *מקור ראשון* (על שידור האצ"ל, 15.5.1948).
 - "September 12, 1935: New Zionist Organization Established in Vienna", Center for Online Judaic Studies (cojs.org); "Moshe Zvi Segal (rabbi)", Wikipedia (על התקיעה בכותל, 1930).
 - שלמה אבינרי, *הרעיון הציוני לגווניו*, עם עובד, 1980 (הפרק על ז'בוטינסקי).
+- זאב ז'בוטינסקי, "הגאולה הסוציאלית" (1934), בתוך *כתבים: רשימות*, עמיחי; ו"משנתו החברתית של זאב ז'בוטינסקי", מרכז מורשת מנחם בגין (על חמשת המ"מים); David Schwartz, "The Social Doctrine of Zeev Jabotinsky", *Open Journal of Political Science* 6(4), 2016.
+- Peter Bergamin, *An Intellectual Biography of Abba Ahimeir*, עבודת דוקטורט, אוניברסיטת אוקספורד, 2016 (על היחסים בין ז'בוטינסקי לאחימאיר ולמקסימליסטים).
