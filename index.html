@@ -163,7 +163,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .reader.on{display:block}
 .rbar{position:sticky;top:0;background:color-mix(in srgb,var(--stone) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule);z-index:2}
 .rbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:10px;padding-bottom:10px}
-.rbar .t{font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rbar .btn{text-decoration:none;white-space:nowrap}
+.rbar .t{flex:1;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .prog{height:3px;background:var(--tchelet);width:0}
 .article{max-width:680px;margin:0 auto;padding:40px 24px 80px}
 .article h1{font-size:clamp(34px,5vw,50px);font-weight:900;line-height:1.08;margin-bottom:8px}
@@ -196,7 +197,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 <div class="wrap">
   <header class="mast">
     <div class="brand">מדורת השבט<small>תולדות הציונות הליברלית</small></div>
-    <nav aria-label="ניווט"><a href="#timeline">ציר הזמן</a><a href="#declaration">המגילה</a><a href="#motifs">החוטים</a></nav>
+    <nav aria-label="ניווט"><a href="#timeline">ציר הזמן</a><a href="#declaration">המגילה</a><a href="#motifs">החוטים</a><a href="print.html">גרסה להדפסה</a></nav>
   </header>
 
   <section class="hero">
@@ -272,7 +273,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <div>מדורת השבט · יוצר: בועז כץ. נכתב בעזרת מודלי בינה מלאכותית, נערך ונבדק על ידי. כל פרק מסתיים ברשימת מקורות, ומחלוקות היסטוריות מסומנות בטקסט.</div>
-    <div>מצאתם טעות? אשמח לתקן.</div>
+    <div><a href="print.html">גרסה להדפסה</a> · מצאתם טעות? אשמח לתקן.</div>
   </div>
 </footer>
 
@@ -281,6 +282,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
     <div class="wrap">
       <button class="btn" id="closeReader">חזרה לציר</button>
       <div class="t" id="rTitle"></div>
+      <a class="btn" id="printChapter" href="print.html">הדפסת הפרק</a>
     </div>
     <div class="prog" id="prog"></div>
   </div>
@@ -394,6 +396,7 @@ async function route(){
   article.insertAdjacentHTML('afterbegin', `<p class="rnote">${esc($('#rnote').textContent)}</p>`);
   article.insertAdjacentHTML('beforeend', `<nav class="rnav">${next ? `<a class="btn solid" href="#post-${next.post}">לפרק ${next.post}: ${esc(next.title)}</a>` : '<span></span>'}${prev ? `<a class="btn" href="#post-${prev.post}">לפרק ${prev.post}</a>` : ''}</nav>`);
   $('#rTitle').textContent = `פרק ${n} מתוך ${D.eras.length} · ${e.title}`;
+  $('#printChapter').href = 'print.html#post-' + n;
   reader.classList.add('on'); document.body.style.overflow='hidden'; reader.scrollTop = 0; $('#closeReader').focus();
 }
 $('#closeReader').addEventListener('click', () => { const n = (location.hash.match(/\d+/)||[])[0]; location.hash = n ? 'era-'+n : ''; });

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><!-- remove when ready to go public -->
+<title>מדורת השבט: גרסה להדפסה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Print edition: a small book. Serif body for paper, one chapter per page run, A4. Single light theme by design. */
+:root{
+  --ink:#17202B; --muted:#5C6570; --rule:#CFCabd; --paper:#FFFFFF; --desk:#E9E7E0;
+  --tchelet:#1F47A3; --sec:#2B7A8B; --trad:#B5761A; --rel:#557336; --rel-fork:#8A6D3B;
+  --display:"Frank Ruhl Libre","David","Times New Roman",serif;
+  --body:"IBM Plex Sans Hebrew","Arial Hebrew",Arial,sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--desk);color:var(--ink);font-family:var(--display);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+/* toolbar (screen only) */
+.bar{position:sticky;top:0;z-index:5;background:var(--ink);color:#fff;font-family:var(--body);font-size:14px}
+.bar .in{max-width:900px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.bar a{color:#fff}
+.bar label{display:flex;gap:8px;align-items:center}
+.bar select{font:inherit;padding:5px 8px;border-radius:6px;border:0;max-width:62vw}
+.bar button{font:inherit;font-weight:600;background:#fff;color:var(--ink);border:0;border-radius:999px;padding:7px 16px;cursor:pointer}
+.bar button:focus-visible,.bar select:focus-visible,.bar a:focus-visible{outline:2px solid #9DB4F0;outline-offset:2px}
+.hint{font-size:12px;opacity:.75;width:100%}
+
+/* sheets on screen */
+.book{padding:24px 12px 60px}
+.sheet{background:var(--paper);width:210mm;max-width:100%;margin:0 auto 18px;padding:22mm 20mm;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* cover */
+.cover{display:flex;flex-direction:column;justify-content:space-between;min-height:250mm}
+.stripes{height:14px;background:
+  linear-gradient(var(--tchelet),var(--tchelet)) 0 2px/100% 3px no-repeat,
+  linear-gradient(var(--tchelet),var(--tchelet)) 0 9px/100% 3px no-repeat}
+.cover .kicker{font-family:var(--body);font-size:11pt;font-weight:600;color:var(--tchelet);margin-top:18mm}
+.cover h1{font-weight:900;font-size:44pt;line-height:1.02;margin:6mm 0 4mm}
+.cover .sub{font-size:15pt;line-height:1.5;max-width:30em}
+.cover svg{width:100%;height:auto;margin:10mm 0 4mm}
+.cover svg text{font-family:var(--body);font-size:12px;fill:var(--muted)}
+.cover svg .yr{font-family:var(--display);font-size:15px;fill:var(--ink);font-weight:700}
+.strand{fill:none;stroke-width:3.2;stroke-linecap:round}
+.cap{font-family:var(--body);font-size:9pt;color:var(--muted);text-align:center}
+.note{font-family:var(--body);font-size:9.5pt;line-height:1.6;border-right:3px solid var(--tchelet);padding:2mm 4mm 2mm 0;color:var(--ink)}
+.note b{color:var(--tchelet)}
+.byline{font-family:var(--body);font-size:10pt;color:var(--muted);margin-top:3mm}
+
+/* contents */
+h2.sec{font-size:24pt;font-weight:900;margin:0 0 8mm}
+.toc{list-style:none;margin:0;padding:0}
+.toc li{display:grid;grid-template-columns:14mm 1fr auto;gap:4mm;align-items:baseline;padding:1.6mm 0;border-bottom:1px solid var(--rule);font-size:11.5pt}
+.toc .n{font-family:var(--body);font-size:9pt;color:var(--muted)}
+.toc .y{font-family:var(--body);font-size:9pt;color:var(--muted);font-variant-numeric:tabular-nums}
+.toc .h{font-family:var(--body);font-size:8.5pt;color:var(--muted);grid-column:2 / 4;margin-top:-1mm}
+.thesis{font-size:12pt;line-height:1.55;margin:0 0 6mm}
+
+/* chapter opener */
+.chead{border-bottom:2px solid var(--ink);padding-bottom:4mm;margin-bottom:6mm}
+.chead .meta{font-family:var(--body);font-size:9.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:6mm}
+.chead .meta .yrs{font-variant-numeric:tabular-nums}
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin:0 0 8mm;font-family:var(--body);font-size:8.5pt;line-height:1.4}
+.voice{border-top:2.5px solid;padding-top:2mm}
+.voice.sec{border-color:var(--sec)} .voice.trad{border-color:var(--trad)} .voice.rel{border-color:var(--rel)}
+.voice .k{color:var(--muted);font-weight:600;font-size:7.5pt}
+.voice .nm{font-weight:600;font-size:9pt}
+
+/* chapter text */
+.text{font-size:11.5pt;line-height:1.7;text-align:justify;hyphens:none}
+.text h1{font-size:26pt;font-weight:900;line-height:1.1;margin:0 0 2mm;text-align:right}
+.text h1 + p{font-family:var(--body);font-size:9pt;color:var(--muted);margin:0 0 5mm}
+.text h2{font-size:15pt;font-weight:700;margin:7mm 0 2mm;text-align:right;break-after:avoid;page-break-after:avoid}
+.text p{margin:0 0 3.2mm;orphans:3;widows:3}
+.text em{color:#3F4852}
+.text blockquote{margin:4mm 0;padding:0 4mm 0 0;border-right:3px solid var(--tchelet);font-size:12.5pt;break-inside:avoid}
+.text ul,.text ol{padding-inline-start:6mm;margin:0 0 3mm}
+.text li{margin-bottom:1.5mm}
+.text a{color:inherit;text-decoration:none}
+.text hr{border:0;border-top:1px solid var(--rule);margin:6mm 0}
+/* sources section reads smaller */
+.text h2.src-h ~ *{font-family:var(--body);font-size:9pt;line-height:1.5;text-align:right}
+.foot{font-family:var(--body);font-size:8pt;color:var(--muted);border-top:1px solid var(--rule);margin-top:8mm;padding-top:2mm}
+
+.loading{font-family:var(--body);text-align:center;color:var(--muted);padding:40px}
+
+@page{size:A4;margin:18mm 18mm 20mm}
+@page{@bottom-center{content:counter(page);font-family:"Frank Ruhl Libre",serif;font-size:9pt;color:#5C6570}}
+@page :first{@bottom-center{content:none}}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .book{padding:0}
+  .sheet{width:auto;margin:0;padding:0;box-shadow:none;break-after:page;page-break-after:always}
+  .sheet:last-child{break-after:auto;page-break-after:auto}
+  .cover{min-height:255mm}
+}
+@media screen and (max-width:820px){
+  .sheet{padding:10mm 7mm}
+  .cover{min-height:0}
+  .cover h1{font-size:32pt}
+  .voices{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="in">
+    <a href="./">חזרה לאתר</a>
+    <label for="pick">מה להדפיס
+      <select id="pick"></select>
+    </label>
+    <button id="doPrint" type="button">הדפסה או שמירה כ-PDF</button>
+    <div class="hint">בחלון ההדפסה אפשר לבחור "שמירה כ-PDF". מומלץ להשאיר את "גרפיקת רקע" מסומנת.</div>
+  </div>
+</div>
+<main class="book" id="book"><div class="loading">טוען את הסדרה…</div></main>
+
+<script src="assets/marked.min.js"></script>
+<script>
+(async () => {
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LANES = {sec:'חילוני', trad:'מסורתי', rel:'דתי'};
+const NOTE = 'החומר כאן נערך כמחקר עצמאי שעשיתי בשביל עצמי, כדי להעמיק בסיפור השורשי הליברלי. הוא נכתב בעזרת מודלי בינה מלאכותית של גוגל, אנתרופיק ופרפלקסיטי, ונוסח בגוף ראשון כדי להקל על ההנגשה והקריאה. הטקסט כולו נערך על ידי, ועבר בדיקת עובדות ואימות. אם נתקלתם בטעות או באי דיוק, אנא כתבו לי ואתקן.';
+const book = document.getElementById('book'), pick = document.getElementById('pick');
+
+let D;
+try { D = await (await fetch('data/hub.json')).json(); }
+catch(e){ book.innerHTML = '<div class="loading">לא הצלחנו לטעון את הסדרה. נסו לרענן את הדף.</div>'; return; }
+
+pick.innerHTML = '<option value="all">כל הסדרה (שער, תוכן, 14 פרקים)</option>' +
+  D.eras.map(e => `<option value="post-${e.post}">פרק ${e.post}: ${esc(e.title)}</option>`).join('');
+
+const cache = {};
+async function md(n){
+  if (cache[n] !== undefined) return cache[n];
+  try { const r = await fetch('content/post' + String(n).padStart(2,'0') + '.md'); cache[n] = r.ok ? await r.text() : ''; }
+  catch(e){ cache[n] = ''; }
+  return cache[n];
+}
+
+const COVER_SVG = `<svg viewBox="0 0 520 304" role="img" aria-label="שלושה חוטים, חילוני, מסורתי ודתי, נפגשים ב-1948, ובשנת 1967 החוט הדתי מתפצל">
+  <text class="yr" x="470" y="292" text-anchor="middle">1897</text>
+  <text class="yr" x="300" y="292" text-anchor="middle">1948</text>
+  <text class="yr" x="210" y="292" text-anchor="middle">1967</text>
+  <text class="yr" x="30" y="292" text-anchor="middle">היום</text>
+  <path class="strand" stroke="var(--sec)" d="M510 70 C 420 70, 360 146, 300 146 C 250 146, 220 140, 170 132 S 60 112, 10 108"/>
+  <path class="strand" stroke="var(--trad)" d="M510 150 C 420 150, 360 150, 300 150 C 240 150, 200 154, 170 154 S 60 160, 10 160"/>
+  <path class="strand" stroke="var(--rel)" d="M510 230 C 420 230, 360 154, 300 154 C 260 154, 235 158, 210 162 S 90 196, 10 200"/>
+  <path class="strand" stroke="var(--rel-fork)" stroke-dasharray="2 7" d="M210 162 C 180 180, 150 230, 80 250 S 30 256, 10 258"/>
+  <circle cx="300" cy="150" r="22" fill="none" stroke="var(--tchelet)" stroke-width="1.5"/>
+  <text x="300" y="104" text-anchor="middle">המגילה</text>
+  <text x="510" y="58" text-anchor="start" style="fill:var(--sec);font-weight:600;font-size:14px">חילוני</text>
+  <text x="510" y="138" text-anchor="start" style="fill:var(--trad);font-weight:600;font-size:14px">מסורתי</text>
+  <text x="510" y="252" text-anchor="start" style="fill:var(--rel);font-weight:600;font-size:14px">דתי</text>
+</svg>`;
+
+function cover(){
+  return `<section class="sheet cover">
+    <div>
+      <div class="stripes" aria-hidden="true"></div>
+      <div class="kicker">מדורת השבט · תולדות הציונות הליברלית</div>
+      <h1>שלושה קולות בנו את הבית.</h1>
+      <p class="sub">חילונים, מסורתיים ודתיים בנו יחד את הציונות ואת מגילת העצמאות. המשותף ביניהם היה היסוד, לא פשרה.</p>
+      ${COVER_SVG}
+      <div class="cap">המרחק בין החוטים מסמל עד כמה הנראטיב קרוב או רחוק בין התפיסות לאורך זמן</div>
+    </div>
+    <div>
+      <p class="note"><b>שקיפות.</b> ${esc(NOTE)}</p>
+      <div class="byline">יוצר: בועז כץ · ${location.host || 'katzboaz.github.io'}${location.pathname.replace(/print\.html$/,'')}</div>
+    </div>
+  </section>`;
+}
+
+function contents(){
+  return `<section class="sheet">
+    <h2 class="sec">תוכן</h2>
+    <p class="thesis">${esc(D.thesis)}</p>
+    <ol class="toc">${D.eras.map(e => `<li><span class="n">פרק ${e.post}</span><span>${esc(e.title)}</span><span class="y" dir="ltr">${esc(e.years)}</span><span class="h">${esc(e.hook)}</span></li>`).join('')}</ol>
+  </section>`;
+}
+
+function voicesBox(e){
+  const vv = e.voices || {}; const v = {sec: vv.secular||vv.sec, trad: vv.traditional||vv.trad, rel: vv.religious||vv.rel};
+  return `<div class="voices">${['sec','trad','rel'].filter(k=>v[k]).map(k =>
+    `<div class="voice ${k}"><div class="k">${LANES[k]}</div><div class="nm">${esc(v[k].name)}</div><div>${esc(v[k].line)}</div></div>`).join('')}</div>`;
+}
+
+async function chapter(e, single){
+  const text = await md(e.post);
+  let html = text ? marked.parse(text) : `<h1>${esc(e.title)}</h1><p>${esc(e.card)}</p>`;
+  html = html.replace(/<h2>(מקורות[^<]*)<\/h2>/, '<h2 class="src-h">$1</h2>');
+  return `<section class="sheet">
+    <div class="chead"><div class="meta"><span>פרק ${e.post} מתוך ${D.eras.length}</span><span class="yrs" dir="ltr">${esc(e.years)}</span></div></div>
+    ${voicesBox(e)}
+    <div class="text">${html}</div>
+    ${single ? `<div class="foot">${esc(NOTE)} · יוצר: בועז כץ · מדורת השבט</div>` : ''}
+  </section>`;
+}
+
+async function render(){
+  const m = location.hash.match(/^#post-(\d+)$/);
+  const e = m && D.eras.find(x => x.post === +m[1]);
+  pick.value = e ? 'post-' + e.post : 'all';
+  book.innerHTML = '<div class="loading">מכין את הגרסה להדפסה…</div>';
+  if (e){
+    book.innerHTML = await chapter(e, true);
+    document.title = `מדורת השבט: פרק ${e.post}, ${e.title}`;
+  } else {
+    const parts = await Promise.all(D.eras.map(x => chapter(x, false)));
+    book.innerHTML = cover() + contents() + parts.join('');
+    document.title = 'מדורת השבט: שלושה קולות בנו את הבית';
+  }
+}
+pick.addEventListener('change', () => { location.hash = pick.value === 'all' ? '' : pick.value; if (pick.value === 'all') render(); });
+addEventListener('hashchange', render);
+document.getElementById('doPrint').addEventListener('click', async () => {
+  try { await document.fonts.ready; } catch(e){}
+  window.print();
+});
+await render();
+})();
+</script>
+</body>
+</html>
